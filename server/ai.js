@@ -19,7 +19,7 @@ app.listen(process.env.PORT, () => {
 })
 
 app.post("/", async (req, res) => {
-    const {message} = req.body;
+    const {message,currentModel} = req.body;
     console.log(message);
     const response = await openai.createCompletion({
         model: "ada",
@@ -32,6 +32,6 @@ app.post("/", async (req, res) => {
 
 app.get("/models", async (req, res) => {
     const response = await openai.listEngines();
-    console.log(response.data.data);
+    // console.log(response.data.data);
     res.json({models: response.data.data});
 })

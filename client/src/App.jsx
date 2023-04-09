@@ -3,11 +3,10 @@ import {useEffect} from 'react'
 import './App.scss'
 
 function App() {
-    useEffect(() => {
-        getEngines()
-    }, [])
-    const [models, setModals] = useState([])
+
+    const [models, setModels] = useState([])
     const [input, setInput] = useState("")
+    const [currentModel, setCurrentModel] = useState("ada");
     const [chatLog, setChatLog] = useState([{
         user: "gpt",
         message: "hey how can i help you today?"
@@ -22,10 +21,14 @@ function App() {
         setChatLog([])
     }
     const getEngines = async () => {
-        fetch('http://localhost:6969/models')
+       fetch('http://localhost:6969/models')
             .then(response => response.json())
-            .then(data => setModals(data))
-    }
+            .then(data => {
+                // console.log(data.models)
+                setModels(data.models)
+            })
+        console.log(models)
+    };
     const handleSubmit = async (e) => {
         e.preventDefault()
         let chatLogCopy = [...chatLog, {user: "parishkar", message: `${input}`}]
@@ -38,12 +41,16 @@ function App() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                message: messages
+                message: messages,
+                currentModel: currentModel
             })
         });
         const data = await response.json()
         await setChatLog([...chatLogCopy, {user: "gpt", message: `${data.message}`}])
     }
+    useEffect(() => {
+        getEngines()
+    }, [])
     return (
         <div className="App">
             <aside className='side-menu'>
@@ -53,10 +60,17 @@ function App() {
                 <div className="side-menu-button" onClick={clearChats}>
                     <span>+ New Chat</span>
                 </div>
+                <div className="side-menu-models">
+                    <select onChange={(event) =>setCurrentModel(event.target.value)}>
+                        {models?.map((model, index) => (
+                            <option key={model.id} value={model.id}>{model.id}</option>
+                        ))}
+                    </select>
+                </div>
             </aside>
             <section className="chat-box">
                 <div className="chat-log">
-                    {chatLog.map((message, index) => (
+                    {chatLog?.map((message, index) => (
                         <ChatMessage key={index} message={message}/>
                     ))}
                     <div className="chat-input-holder">
