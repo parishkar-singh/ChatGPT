@@ -11,8 +11,8 @@ function App() {
       <aside className='side-menu'>
           <div className="side-menu-button">
               {/*<button>New Chat</button>*/}
-              <span>+</span>
-              New Chat
+              <span>+ New Chat</span>
+
           </div>
       </aside>
         <section className="chat-box">
