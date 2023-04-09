@@ -22,7 +22,7 @@ app.post("/", async (req, res) => {
     const {message,currentModel} = req.body;
     console.log(message);
     const response = await openai.createCompletion({
-        model: "ada",
+        model: `${currentModel}`,
         prompt: `${message}`,
         max_tokens: 100,
         temperature: 0.5,
