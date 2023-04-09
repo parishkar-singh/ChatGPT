@@ -14,11 +14,11 @@ function App() {
               <span>+</span>
               New Chat
           </div>
-        {/*<h1>Aside1</h1>*/}
       </aside>
-
         <section className="chat-box">
-
+            <div className="chat-input-holder">
+                <textarea placeholder='Type your query here' className="chat-input-textarea"></textarea>
+            </div>
         </section>
     </div>
   )

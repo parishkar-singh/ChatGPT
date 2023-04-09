@@ -9,46 +9,62 @@
   left: 0;
   right: 0;
   font-family: 'Bebas Neue', cursive;
-
   .side-menu {
     padding: 10px;
     width: 260px;
     border-right: 2px solid gray;
   }
-
   .side-menu-button {
     padding: 15px;
     border: 2px solid gray;
     border-radius: 25px;
     text-align: center;
     font-size: 25px;
-    span{
+    cursor: pointer;
+
+    span {
       padding-left: 6px;
       padding-right: 6px;
+    }
 
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 0 20px gray, 0 0 10px gray, 0 0 10px gray;
+      color: black;
+      background: white;
     }
   }
 
   .chat-box {
     flex: 1;
     border-left: 2px solid gray;
+
+    .chat-input-holder {
+      .chat-input-textarea {
+        background-color: black;
+        color: white;
+        width: 100%;
+        height: 100px;
+        border: 2px solid gray;
+        outline: none;
+        resize: none;
+        padding: 10px;
+        font-size: 20px;
+        font-family: 'Bebas Neue', cursive;
+        border-radius: 25px;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          background-color: white;
+          color: black;
+          box-shadow: 0 0 20px gray, 0 0 10px gray, 0 0 10px gray;
+          color: black;
+        }
+      }
+
+    }
   }
 
-  @keyframes glow {
-    0% {
-      box-shadow: inset 0 0 0 2px #48abe0,
-      inset 0 0 10px 5px #00eaff,
-      inset 0 0 20px 10px #48abe0;
-    }
-    50% {
-      box-shadow: inset 0 0 0 2px #48abe0,
-      inset 0 0 20px 10px #00eaff,
-      inset 0 0 40px 20px #48abe0;
-    }
-    100% {
-      box-shadow: inset 0 0 0 2px #48abe0,
-      inset 0 0 10px 5px #00eaff,
-      inset 0 0 20px 10px #48abe0;
-    }
-  }
+
 }
