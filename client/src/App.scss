@@ -26,10 +26,12 @@
     text-align: center;
     font-size: 25px;
     cursor: pointer;
+
     span {
       padding-left: 6px;
       padding-right: 6px;
     }
+
     transition: all 0.2s ease-in-out;
 
     &:hover {
@@ -41,9 +43,45 @@
 
   .chat-box {
     padding: 10px;
+    position: relative;
     flex: 1;
 
+    .chat-log {
+      padding: 24px;
+      text-align: center;
+      display: flex;
+      //overflow-y: scroll;
+      //height: 100%;
+      .chat-message {
+        display: flex;
+        padding: 12px;
+        padding-left: 40px;
+        padding-right: 40px;
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            //display: flex;
+            //align-items: center;
+            //justify-content: center;
+            //font-size: 25px;
+            //margin-right: 12px;
+        }
+        .message {
+        padding: 12px;
+
+        }
+      }
+    }
+
     .chat-input-holder {
+      padding: 24px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
       .chat-input-textarea {
         background-color: black;
         color: white;
@@ -56,13 +94,14 @@
         font-family: 'Bebas Neue', cursive;
         border-radius: 30px;
         transition: all 0.2s ease-in-out;
-      
+
         &::placeholder {
           display: flex;
           color: white;
           text-align: center;
           line-height: 50px;
         }
+
         &:hover {
           background-color: white;
           color: black;
